@@ -1,0 +1,791 @@
+@layer typography {
+  /* Font Families */
+  .font-sans {
+    font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .font-serif {
+    font-family: var(--font-serif), Georgia, Cambria, 'Times New Roman', serif;
+  }
+
+  .font-mono {
+    font-family: var(--font-mono), ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+  }
+
+  .font-display {
+    font-family: var(--font-display), var(--font-serif), Georgia, serif;
+  }
+
+  /* Font Sizes */
+  .text-xs {
+    @apply text-xs leading-4;
+  }
+
+  .text-sm {
+    @apply text-sm leading-5;
+  }
+
+  .text-base {
+    @apply text-base leading-6;
+  }
+
+  .text-lg {
+    @apply text-lg leading-6;
+  }
+
+  .text-xl {
+    @apply text-xl leading-7;
+  }
+
+  .text-2xl {
+    @apply text-2xl leading-8;
+  }
+
+  .text-3xl {
+    @apply text-3xl leading-9;
+  }
+
+  .text-4xl {
+    @apply text-4xl leading-10;
+  }
+
+  .text-5xl {
+    @apply text-5xl leading-11;
+  }
+
+  .text-6xl {
+    @apply text-6xl leading-12;
+  }
+
+  .text-7xl {
+    @apply text-7xl leading-13;
+  }
+
+  .text-8xl {
+    @apply text-8xl leading-14;
+  }
+
+  .text-9xl {
+    @apply text-9xl leading-15;
+  }
+
+  /* Font Weights */
+  .font-thin {
+    @apply font-thin;
+  }
+
+  .font-extralight {
+    @apply font-extralight;
+  }
+
+  .font-light {
+    @apply font-light;
+  }
+
+  .font-normal {
+    @apply font-normal;
+  }
+
+  .font-medium {
+    @apply font-medium;
+  }
+
+  .font-semibold {
+    @apply font-semibold;
+  }
+
+  .font-bold {
+    @apply font-bold;
+  }
+
+  .font-extrabold {
+    @apply font-extrabold;
+  }
+
+  .font-black {
+    @apply font-black;
+  }
+
+  /* Line Heights */
+  .leading-none {
+    @apply leading-none;
+  }
+
+  .leading-tight {
+    @apply leading-tight;
+  }
+
+  .leading-snug {
+    @apply leading-snug;
+  }
+
+  .leading-normal {
+    @apply leading-normal;
+  }
+
+  .leading-relaxed {
+    @apply leading-relaxed;
+  }
+
+  .leading-loose {
+    @apply leading-loose;
+  }
+
+  .leading-3 {
+    @apply leading-3;
+  }
+
+  .leading-4 {
+    @apply leading-4;
+  }
+
+  .leading-5 {
+    @apply leading-5;
+  }
+
+  .leading-6 {
+    @apply leading-6;
+  }
+
+  .leading-7 {
+    @apply leading-7;
+  }
+
+  .leading-8 {
+    @apply leading-8;
+  }
+
+  .leading-9 {
+    @apply leading-9;
+  }
+
+  .leading-10 {
+    @apply leading-10;
+  }
+
+  /* Letter Spacing */
+  .tracking-tighter {
+    @apply tracking-tighter;
+  }
+
+  .tracking-tight {
+    @apply tracking-tight;
+  }
+
+  .tracking-normal {
+    @apply tracking-normal;
+  }
+
+  .tracking-wide {
+    @apply tracking-wide;
+  }
+
+  .tracking-wider {
+    @apply tracking-wider;
+  }
+
+  .tracking-widest {
+    @apply tracking-widest;
+  }
+
+  /* Text Colors */
+  .text-text-primary {
+    @apply text-text-primary;
+  }
+
+  .text-aged-paper {
+    @apply text-aged-paper;
+  }
+
+  .text-aged-paper-dark {
+    @apply text-aged-paper-dark;
+  }
+
+  .text-muted-slate {
+    @apply text-muted-slate;
+  }
+
+  .text-lamp-gold {
+    @apply text-lamp-gold;
+  }
+
+  .text-lamp-gold-dim {
+    @apply text-lamp-gold-dim;
+  }
+
+  .text-blood-ink {
+    @apply text-blood-ink;
+  }
+
+  .text-blood-ink-dim {
+    @apply text-blood-ink-dim;
+  }
+
+  .text-jade-whisper {
+    @apply text-jade-whisper;
+  }
+
+  .text-jade-whisper-dim {
+    @apply text-jade-whisper-dim;
+  }
+
+  .text-ink-mist {
+    @apply text-ink-mist;
+  }
+
+  .text-ink-mist-dim {
+    @apply text-ink-mist-dim;
+  }
+
+  .text-parchment-burn {
+    @apply text-parchment-burn;
+  }
+
+  .text-parchment-burn-dim {
+    @apply text-parchment-burn-dim;
+  }
+
+  .text-moon-silver {
+    @apply text-moon-silver;
+  }
+
+  .text-moon-silver-dim {
+    @apply text-moon-silver-dim;
+  }
+
+  .text-void-black {
+    @apply text-void-black;
+  }
+
+  .text-white {
+    @apply text-white;
+  }
+
+  .text-transparent {
+    @apply text-transparent;
+  }
+
+  .text-current {
+    @apply text-current;
+  }
+
+  /* Text Alignment */
+  .text-left {
+    @apply text-left;
+  }
+
+  .text-center {
+    @apply text-center;
+  }
+
+  .text-right {
+    @apply text-right;
+  }
+
+  .text-justify {
+    @apply text-justify;
+  }
+
+  .text-start {
+    @apply text-start;
+  }
+
+  .text-end {
+    @apply text-end;
+  }
+
+  /* Text Decoration */
+  .underline {
+    @apply underline;
+  }
+
+  .overline {
+    @apply overline;
+  }
+
+  .line-through {
+    @apply line-through;
+  }
+
+  .no-underline {
+    @apply no-underline;
+  }
+
+  .underline-offset-auto {
+    @apply underline-offset-auto;
+  }
+
+  .underline-offset-1 {
+    @apply underline-offset-1;
+  }
+
+  .underline-offset-2 {
+    @apply underline-offset-2;
+  }
+
+  .underline-offset-4 {
+    @apply underline-offset-4;
+  }
+
+  .underline-offset-8 {
+    @apply underline-offset-8;
+  }
+
+  /* Text Transform */
+  .uppercase {
+    @apply uppercase;
+  }
+
+  .lowercase {
+    @apply lowercase;
+  }
+
+  .capitalize {
+    @apply capitalize;
+  }
+
+  .normal-case {
+    @apply normal-case;
+  }
+
+  /* Text Overflow */
+  .truncate {
+    @apply truncate;
+  }
+
+  .text-ellipsis {
+    @apply text-ellipsis;
+  }
+
+  .text-clip {
+    @apply text-clip;
+  }
+
+  /* Whitespace */
+  .whitespace-normal {
+    @apply whitespace-normal;
+  }
+
+  .whitespace-nowrap {
+    @apply whitespace-nowrap;
+  }
+
+  .whitespace-pre {
+    @apply whitespace-pre;
+  }
+
+  .whitespace-pre-line {
+    @apply whitespace-pre-line;
+  }
+
+  .whitespace-pre-wrap {
+    @apply whitespace-pre-wrap;
+  }
+
+  .whitespace-break-spaces {
+    @apply whitespace-break-spaces;
+  }
+
+  /* Word Break */
+  .break-normal {
+    @apply break-normal;
+  }
+
+  .break-words {
+    @apply break-words;
+  }
+
+  .break-all {
+    @apply break-all;
+  }
+
+  .break-keep {
+    @apply break-keep;
+  }
+
+  /* Hyphens */
+  .hyphens-none {
+    @apply hyphens-none;
+  }
+
+  .hyphens-manual {
+    @apply hyphens-manual;
+  }
+
+  .hyphens-auto {
+    @apply hyphens-auto;
+  }
+
+  /* Content */
+  .content-none {
+    @apply content-none;
+  }
+
+  /* Vertical Alignment */
+  .align-baseline {
+    @apply align-baseline;
+  }
+
+  .align-top {
+    @apply align-top;
+  }
+
+  .align-middle {
+    @apply align-middle;
+  }
+
+  .align-bottom {
+    @apply align-bottom;
+  }
+
+  .align-text-top {
+    @apply align-text-top;
+  }
+
+  .align-text-bottom {
+    @apply align-text-bottom;
+  }
+
+  .align-sub {
+    @apply align-sub;
+  }
+
+  .align-super {
+    @apply align-super;
+  }
+
+  /* Heading Styles */
+  .heading-1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-aged-paper;
+  }
+
+  .heading-2 {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-aged-paper;
+  }
+
+  .heading-3 {
+    @apply text-2xl sm:text-3xl font-bold tracking-tight text-aged-paper;
+  }
+
+  .heading-4 {
+    @apply text-xl sm:text-2xl font-semibold tracking-tight text-aged-paper;
+  }
+
+  .heading-5 {
+    @apply text-lg sm:text-xl font-semibold tracking-tight text-aged-paper;
+  }
+
+  .heading-6 {
+    @apply text-base sm:text-lg font-semibold tracking-tight text-aged-paper;
+  }
+
+  /* Display Styles */
+  .display-1 {
+    @apply text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tighter text-aged-paper;
+  }
+
+  .display-2 {
+    @apply text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tighter text-aged-paper;
+  }
+
+  .display-3 {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter text-aged-paper;
+  }
+
+  .display-4 {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter text-aged-paper;
+  }
+
+  /* Body Text */
+  .body-lg {
+    @apply text-lg leading-relaxed text-aged-paper;
+  }
+
+  .body {
+    @apply text-base leading-relaxed text-aged-paper;
+  }
+
+  .body-sm {
+    @apply text-sm leading-relaxed text-muted-slate;
+  }
+
+  .body-xs {
+    @apply text-xs leading-relaxed text-muted-slate;
+  }
+
+  /* Lead Text */
+  .lead {
+    @apply text-lg leading-relaxed text-aged-paper/90;
+  }
+
+  .lead-sm {
+    @apply text-base leading-relaxed text-aged-paper/90;
+  }
+
+  /* Muted Text */
+  .text-muted {
+    @apply text-muted-slate;
+  }
+
+  .text-muted-sm {
+    @apply text-sm text-muted-slate;
+  }
+
+  .text-muted-xs {
+    @apply text-xs text-muted-slate;
+  }
+
+  /* Link Styles */
+  .link {
+    @apply text-lamp-gold hover:text-lamp-gold-dim transition-colors underline-offset-2 hover:underline;
+  }
+
+  .link-muted {
+    @apply text-muted-slate hover:text-aged-paper transition-colors underline-offset-2 hover:underline;
+  }
+
+  .link-inherit {
+    @apply text-inherit hover:text-lamp-gold transition-colors underline-offset-2 hover:underline;
+  }
+
+  /* List Styles */
+  .list-disc {
+    @apply list-disc list-inside;
+  }
+
+  .list-decimal {
+    @apply list-decimal list-inside;
+  }
+
+  .list-none {
+    @apply list-none;
+  }
+
+  .list-inside {
+    @apply list-inside;
+  }
+
+  .list-outside {
+    @apply list-outside;
+  }
+
+  /* Prose / Article Styles */
+  .prose {
+    @apply text-base leading-relaxed text-aged-paper max-w-none;
+  }
+
+  .prose-sm {
+    @apply text-sm leading-relaxed text-aged-paper max-w-none;
+  }
+
+  .prose-lg {
+    @apply text-lg leading-relaxed text-aged-paper max-w-none;
+  }
+
+  .prose-xl {
+    @apply text-xl leading-relaxed text-aged-paper max-w-none;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    @apply font-bold text-aged-paper tracking-tight;
+  }
+
+  .prose h1 {
+    @apply text-3xl sm:text-4xl mb-6 mt-10;
+  }
+
+  .prose h2 {
+    @apply text-2xl sm:text-3xl mb-4 mt-8;
+  }
+
+  .prose h3 {
+    @apply text-xl sm:text-2xl mb-3 mt-6;
+  }
+
+  .prose h4 {
+    @apply text-lg sm:text-xl mb-2 mt-4;
+  }
+
+  .prose h5 {
+    @apply text-base sm:text-lg mb-2 mt-4;
+  }
+
+  .prose h6 {
+    @apply text-sm sm:text-base mb-2 mt-4;
+  }
+
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  .prose a {
+    @apply text-lamp-gold hover:text-lamp-gold-dim underline-offset-2 hover:underline transition-colors;
+  }
+
+  .prose strong {
+    @apply font-semibold text-aged-paper;
+  }
+
+  .prose em {
+    @apply italic;
+  }
+
+  .prose code {
+    @apply font-mono text-sm bg-aged-paper-dark px-1.5 py-0.5 rounded text-lamp-gold;
+  }
+
+  .prose pre {
+    @apply bg-ink-night border border-muted-slate/20 rounded-lg p-4 overflow-x-auto mb-6;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 text-aged-paper;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-lamp-gold pl-4 italic text-muted-slate my-4;
+  }
+
+  .prose ul {
+    @apply list-disc list-inside mb-4 space-y-2;
+  }
+
+  .prose ol {
+    @apply list-decimal list-inside mb-4 space-y-2;
+  }
+
+  .prose li {
+    @apply leading-relaxed;
+  }
+
+  .prose li::marker {
+    @apply text-lamp-gold;
+  }
+
+  .prose hr {
+    @apply border-muted-slate/20 my-8;
+  }
+
+  .prose table {
+    @apply w-full border-collapse mb-6;
+  }
+
+  .prose th,
+  .prose td {
+    @apply border border-muted-slate/20 px-4 py-2 text-left;
+  }
+
+  .prose th {
+    @apply bg-aged-paper-dark font-semibold text-aged-paper;
+  }
+
+  .prose td {
+    @apply text-aged-paper;
+  }
+
+  .prose img {
+    @apply rounded-lg mb-6 max-w-full h-auto;
+  }
+
+  .prose figure {
+    @apply mb-6;
+  }
+
+  .prose figcaption {
+    @apply text-sm text-muted-slate text-center mt-2;
+  }
+
+  /* Code Block Styles */
+  .code-block {
+    @apply bg-ink-night border border-muted-slate/20 rounded-lg p-4 overflow-x-auto font-mono text-sm leading-relaxed;
+  }
+
+  .code-inline {
+    @apply font-mono text-sm bg-aged-paper-dark px-1.5 py-0.5 rounded text-lamp-gold;
+  }
+
+  /* Mark Styles */
+  .mark {
+    @apply bg-lamp-gold/20 text-lamp-gold px-1 py-0.5 rounded;
+  }
+
+  /* Selection Styles */
+  ::selection {
+    @apply bg-lamp-gold/30 text-text-primary;
+  }
+
+  ::-moz-selection {
+    @apply bg-lamp-gold/30 text-text-primary;
+  }
+
+  /* Focus Visible Typography */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lamp-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink-night;
+  }
+
+  /* Text Gradient */
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-lamp-gold to-lamp-gold-dim bg-clip-text text-transparent;
+  }
+
+  .text-gradient-blood {
+    @apply bg-gradient-to-r from-blood-ink to-blood-ink-dim bg-clip-text text-transparent;
+  }
+
+  .text-gradient-jade {
+    @apply bg-gradient-to-r from-jade-whisper to-jade-whisper-dim bg-clip-text text-transparent;
+  }
+
+  /* Drop Cap */
+  .drop-cap::first-letter {
+    @apply float-left text-6xl font-bold text-lamp-gold pr-3 pb-1 leading-none;
+  }
+
+  /* Text Balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Writing Mode */
+  .writing-mode-horizontal-tb {
+    writing-mode: horizontal-tb;
+  }
+
+  .writing-mode-vertical-rl {
+    writing-mode: vertical-rl;
+  }
+
+  .writing-mode-vertical-lr {
+    writing-mode: vertical-lr;
+  }
+
+  .writing-mode-sideways-rl {
+    writing-mode: sideways-rl;
+  }
+
+  .writing-mode-sideways-lr {
+    writing-mode: sideways-lr;
+  }
+
+  /* Text Orientation */
+  .text-orientation-mixed {
+    text-orientation: mixed;
+  }
+
+  .text-orientation-upright {
+    text-orientation: upright;
+  }
+
+  .text-orientation-sideways {
+    text-orientation: sideways;
+  }
+}

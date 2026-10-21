@@ -1,0 +1,34 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "Literal[value='#D8A448']",
+        "message": "Token leakage: Use #C9A84C (accent-gold per tokens.css) instead of #D8A448. #D8A448 is legacy and allowed only in src/main/hyperframes.ts (video templates) and src/renderer/pages/VideoStudioScreen.tsx (violet module is exception). See src/renderer/styles/tokens.css."
+      },
+      {
+        "selector": "Literal[value='#14171F']",
+        "message": "Token leakage: Use #0D0F14 (bg-primary) instead of #14171F. See tokens.css."
+      },
+      {
+        "selector": "Literal[value='rgba(255,255,255,0.04)']",
+        "message": "Use border rgba(107,122,153,0.12) per tokens.css, not rgba(255,255,255,0.04)."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/main/hyperframes.ts", "src/renderer/pages/VideoStudioScreen.tsx"],
+      "rules": {
+        "no-restricted-syntax": "off"
+      }
+    }
+  ]
+}

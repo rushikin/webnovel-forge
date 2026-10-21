@@ -1,0 +1,702 @@
+@layer forms {
+  /* Form Layout */
+  .form-group {
+    @apply mb-4;
+  }
+
+  .form-row {
+    @apply flex flex-wrap gap-4;
+  }
+
+  .form-row > * {
+    @apply flex-1 min-w-[200px];
+  }
+
+  .form-grid {
+    @apply grid gap-4;
+  }
+
+  .form-grid-2 {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+  }
+
+  .form-grid-3 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+  }
+
+  .form-grid-4 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4;
+  }
+
+  /* Labels */
+  .form-label {
+    @apply block text-sm font-medium text-aged-text mb-1.5;
+  }
+
+  .form-label-required::after {
+    content: '*';
+    @apply text-primary ml-1;
+  }
+
+  .form-label-optional {
+    @apply text-aged-text-muted text-sm ml-1;
+  }
+
+  .form-label-inline {
+    @apply inline-flex items-center gap-2 cursor-pointer;
+  }
+
+  /* Input Base */
+  .form-input {
+    @apply w-full px-3 py-2 bg-aged-paper border border-aged-border rounded-md text-aged-text placeholder-aged-text-muted
+           focus:outline-none focus:ring-2 focus:ring-focus focus:border-transparent
+           transition-colors duration-150 ease-in-out
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .form-input-sm {
+    @apply form-input px-2.5 py-1.5 text-sm;
+  }
+
+  .form-input-lg {
+    @apply form-input px-4 py-3 text-base;
+  }
+
+  .form-input-error {
+    @apply form-input border-red-500 focus:ring-red-500 focus:border-red-500;
+  }
+
+  .form-input-success {
+    @apply form-input border-jade-500 focus:ring-jade-500 focus:border-jade-500;
+  }
+
+  .form-input-warning {
+    @apply form-input border-amber-500 focus:ring-amber-500 focus:border-amber-500;
+  }
+
+  /* Textarea */
+  .form-textarea {
+    @apply form-input min-h-[100px] resize-y;
+  }
+
+  .form-textarea-sm {
+    @apply form-textarea min-h-[60px];
+  }
+
+  .form-textarea-lg {
+    @apply form-textarea min-h-[150px];
+  }
+
+  /* Select */
+  .form-select {
+    @apply form-input appearance-none bg-[url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")] bg-right-3 bg-center bg-no-repeat pr-10;
+  }
+
+  .form-select-sm {
+    @apply form-select px-2.5 py-1.5 text-sm pr-8;
+  }
+
+  .form-select-lg {
+    @apply form-select px-4 py-3 text-base pr-12;
+  }
+
+  .form-select-multiple {
+    @apply form-select min-h-[100px] bg-none pr-4;
+  }
+
+  /* Checkbox */
+  .form-checkbox {
+    @apply relative inline-flex items-center justify-center h-4 w-4 rounded border-aged-border
+           bg-aged-paper text-primary
+           focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2
+           transition-colors duration-150 ease-in-out
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .form-checkbox:checked {
+    @apply bg-primary border-primary;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+  }
+
+  .form-checkbox-indeterminate {
+    @apply bg-primary border-primary;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 8a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7A.5.5 0 014 8z'/%3E%3C/svg%3E");
+  }
+
+  .form-checkbox-sm {
+    @apply form-checkbox h-3.5 w-3.5;
+  }
+
+  .form-checkbox-lg {
+    @apply form-checkbox h-5 w-5;
+  }
+
+  /* Radio */
+  .form-radio {
+    @apply relative inline-flex items-center justify-center h-4 w-4 rounded-full border-aged-border
+           bg-aged-paper text-primary
+           focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2
+           transition-colors duration-150 ease-in-out
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .form-radio:checked {
+    @apply border-primary;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='3'/%3E%3C/svg%3E");
+  }
+
+  .form-radio-sm {
+    @apply form-radio h-3.5 w-3.5;
+  }
+
+  .form-radio-lg {
+    @apply form-radio h-5 w-5;
+  }
+
+  /* Switch/Toggle */
+  .form-switch {
+    @apply relative inline-flex h-6 w-11 items-center rounded-full border-2 border-aged-border
+           bg-aged-border transition-colors duration-200 ease-in-out
+           focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .form-switch:has(input:checked) {
+    @apply bg-primary border-primary;
+  }
+
+  .form-switch:has(input:checked) .form-switch-thumb {
+    @apply translate-x-full;
+  }
+
+  .form-switch input {
+    @apply sr-only peer;
+  }
+
+  .form-switch-thumb {
+    @apply pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow
+           transition-transform duration-200 ease-in-out;
+  }
+
+  .form-switch-sm {
+    @apply form-switch h-5 w-9;
+  }
+
+  .form-switch-sm .form-switch-thumb {
+    @apply h-4 w-4;
+  }
+
+  .form-switch-lg {
+    @apply form-switch h-7 w-13;
+  }
+
+  .form-switch-lg .form-switch-thumb {
+    @apply h-6 w-6;
+  }
+
+  /* File Input */
+  .form-file {
+    @apply relative w-full;
+  }
+
+  .form-file-input {
+    @apply absolute inset-0 opacity-0 cursor-pointer;
+  }
+
+  .form-file-label {
+    @apply flex items-center justify-center w-full px-4 py-3 bg-aged-paper border-2 border-dashed border-aged-border
+           rounded-lg text-aged-text text-center transition-colors duration-150
+           hover:border-primary hover:bg-primary/5;
+  }
+
+  .form-file-label:has(input:focus-visible) {
+    @apply border-primary ring-2 ring-focus ring-offset-2;
+  }
+
+  .form-file-text {
+    @apply pointer-events-none;
+  }
+
+  .form-file-icon {
+    @apply mr-2 text-aged-text-muted;
+  }
+
+  /* Range/Slider */
+  .form-range {
+    @apply w-full h-2 bg-aged-border rounded-lg appearance-none cursor-pointer;
+  }
+
+  .form-range::-webkit-slider-thumb {
+    @apply appearance-none w-5 h-5 bg-primary rounded-full border-2 border-white shadow-md
+           transition-all duration-150 hover:bg-primary-hover hover:shadow-lg;
+  }
+
+  .form-range::-moz-range-thumb {
+    @apply w-5 h-5 bg-primary rounded-full border-2 border-white shadow-md
+           transition-all duration-150 hover:bg-primary-hover hover:shadow-lg;
+  }
+
+  .form-range:focus {
+    @apply outline-none ring-2 ring-focus ring-offset-2;
+  }
+
+  .form-range:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* Form Messages */
+  .form-message {
+    @apply mt-1.5 text-sm;
+  }
+
+  .form-message-error {
+    @apply form-message text-red-500 flex items-center gap-1;
+  }
+
+  .form-message-success {
+    @apply form-message text-jade-500 flex items-center gap-1;
+  }
+
+  .form-message-warning {
+    @apply form-message text-amber-500 flex items-center gap-1;
+  }
+
+  .form-message-info {
+    @apply form-message text-blue-500 flex items-center gap-1;
+  }
+
+  .form-message-hint {
+    @apply form-message text-aged-text-muted;
+  }
+
+  /* Form Field Wrapper */
+  .form-field {
+    @apply w-full;
+  }
+
+  .form-field-inline {
+    @apply inline-flex items-end gap-4;
+  }
+
+  .form-field-inline > .form-field {
+    @apply flex-1;
+  }
+
+  /* Input Group */
+  .form-input-group {
+    @apply flex items-stretch;
+  }
+
+  .form-input-group .form-input,
+  .form-input-group .form-select,
+  .form-input-group .form-textarea {
+    @apply rounded-none;
+  }
+
+  .form-input-group .form-input:first-child,
+  .form-input-group .form-select:first-child,
+  .form-input-group .form-textarea:first-child {
+    @apply rounded-l-md;
+  }
+
+  .form-input-group .form-input:last-child,
+  .form-input-group .form-select:last-child,
+  .form-input-group .form-textarea:last-child {
+    @apply rounded-r-md;
+  }
+
+  .form-input-group-addon {
+    @apply flex items-center px-3 bg-aged-border border border-aged-border text-aged-text-muted
+           border-r-0 rounded-l-md;
+  }
+
+  .form-input-group-addon:last-child {
+    @apply border-l-0 rounded-r-md rounded-l-none;
+  }
+
+  .form-input-group .form-input-group-addon + .form-input,
+  .form-input-group .form-input-group-addon + .form-select {
+    @apply border-l-0;
+  }
+
+  /* Floating Labels */
+  .form-floating {
+    @apply relative;
+  }
+
+  .form-floating > .form-input,
+  .form-floating > .form-select,
+  .form-floating > .form-textarea {
+    @apply pt-5 pb-1.5;
+  }
+
+  .form-floating > label {
+    @apply absolute top-0 left-3 h-full px-2 pointer-events-none text-aged-text-muted
+           transition-all duration-150 ease-in-out
+           peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base
+           peer-focus:top-1 peer-focus:-translate-y-1 peer-focus:text-xs peer-focus:text-primary;
+  }
+
+  .form-floating > .form-input:focus ~ label,
+  .form-floating > .form-select:focus ~ label,
+  .form-floating > .form-textarea:focus ~ label,
+  .form-floating > .form-input:not(:placeholder-shown) ~ label,
+  .form-floating > .form-select:not([value=""]) ~ label,
+  .form-floating > .form-textarea:not(:placeholder-shown) ~ label {
+    @apply top-1 -translate-y-1 text-xs text-primary;
+  }
+
+  /* Validation States */
+  .form-field.has-error .form-input,
+  .form-field.has-error .form-select,
+  .form-field.has-error .form-textarea,
+  .form-field.has-error .form-checkbox,
+  .form-field.has-error .form-radio {
+    @apply border-red-500 focus:ring-red-500 focus:border-red-500;
+  }
+
+  .form-field.has-success .form-input,
+  .form-field.has-success .form-select,
+  .form-field.has-success .form-textarea,
+  .form-field.has-success .form-checkbox,
+  .form-field.has-success .form-radio {
+    @apply border-jade-500 focus:ring-jade-500 focus:border-jade-500;
+  }
+
+  .form-field.has-warning .form-input,
+  .form-field.has-warning .form-select,
+  .form-field.has-warning .form-textarea,
+  .form-field.has-warning .form-checkbox,
+  .form-field.has-warning .form-radio {
+    @apply border-amber-500 focus:ring-amber-500 focus:border-amber-500;
+  }
+
+  /* Disabled States */
+  .form-field.disabled .form-input,
+  .form-field.disabled .form-select,
+  .form-field.disabled .form-textarea,
+  .form-field.disabled .form-checkbox,
+  .form-field.disabled .form-radio,
+  .form-field.disabled .form-switch {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* Readonly States */
+  .form-field.readonly .form-input,
+  .form-field.readonly .form-select,
+  .form-field.readonly .form-textarea {
+    @apply bg-aged-border/50 cursor-default;
+  }
+
+  /* Loading State */
+  .form-field.loading .form-input,
+  .form-field.loading .form-select,
+  .form-field.loading .form-textarea {
+    @apply relative;
+  }
+
+  .form-field.loading::after {
+    content: '';
+    @apply absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 border-2 border-primary border-t-transparent
+           rounded-full animate-spin;
+  }
+
+  /* Character Count */
+  .form-char-count {
+    @apply text-right text-xs text-aged-text-muted mt-1;
+  }
+
+  .form-char-count.warning {
+    @apply text-amber-500;
+  }
+
+  .form-char-count.error {
+    @apply text-red-500;
+  }
+
+  /* Password Toggle */
+  .form-password-toggle {
+    @apply relative;
+  }
+
+  .form-password-toggle .form-input {
+    @apply pr-12;
+  }
+
+  .form-password-toggle-btn {
+    @apply absolute right-3 top-1/2 -translate-y-1/2 text-aged-text-muted hover:text-aged-text
+           transition-colors duration-150;
+  }
+
+  /* Search Input */
+  .form-search {
+    @apply relative;
+  }
+
+  .form-search .form-input {
+    @apply pl-10 pr-10;
+  }
+
+  .form-search-icon {
+    @apply absolute left-3 top-1/2 -translate-y-1/2 text-aged-text-muted pointer-events-none;
+  }
+
+  .form-search-clear {
+    @apply absolute right-3 top-1/2 -translate-y-1/2 text-aged-text-muted hover:text-aged-text
+           transition-colors duration-150;
+  }
+
+  /* Tag Input */
+  .form-tags {
+    @apply flex flex-wrap gap-2 p-2 bg-aged-paper border border-aged-border rounded-md
+           focus-within:ring-2 focus-within:ring-focus focus-within:border-transparent;
+  }
+
+  .form-tag {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 bg-primary/10 text-primary text-sm
+           rounded-full;
+  }
+
+  .form-tag-remove {
+    @apply p-0.5 rounded hover:bg-primary/20 transition-colors;
+  }
+
+  .form-tags-input {
+    @apply flex-1 min-w-[80px] bg-transparent border-none focus:outline-none text-aged-text
+           placeholder-aged-text-muted py-1;
+  }
+
+  /* Autocomplete */
+  .form-autocomplete {
+    @apply relative;
+  }
+
+  .form-autocomplete-input {
+    @apply form-input;
+  }
+
+  .form-autocomplete-dropdown {
+    @apply absolute z-50 w-full mt-1 bg-aged-paper border border-aged-border rounded-md shadow-lg
+           max-h-60 overflow-y-auto;
+  }
+
+  .form-autocomplete-option {
+    @apply px-3 py-2 hover:bg-aged-border/50 cursor-pointer transition-colors;
+  }
+
+  .form-autocomplete-option.highlighted {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .form-autocomplete-option.selected {
+    @apply bg-primary text-white;
+  }
+
+  .form-autocomplete-no-results {
+    @apply px-3 py-2 text-aged-text-muted text-center;
+  }
+
+  .form-autocomplete-loading {
+    @apply px-3 py-2 text-center text-aged-text-muted;
+  }
+
+  /* Date Picker */
+  .form-datepicker {
+    @apply relative;
+  }
+
+  .form-datepicker-input {
+    @apply form-input;
+  }
+
+  .form-datepicker-calendar {
+    @apply absolute z-50 mt-1 bg-aged-paper border border-aged-border rounded-md shadow-lg p-2;
+  }
+
+  .form-datepicker-header {
+    @apply flex items-center justify-between mb-2;
+  }
+
+  .form-datepicker-nav {
+    @apply p-1 rounded hover:bg-aged-border/50 transition-colors;
+  }
+
+  .form-datepicker-grid {
+    @apply grid grid-cols-7 gap-0.5;
+  }
+
+  .form-datepicker-day {
+    @apply aspect-square flex items-center justify-center text-sm rounded
+           hover:bg-aged-border/50 transition-colors;
+  }
+
+  .form-datepicker-day.today {
+    @apply bg-primary/10 text-primary font-medium;
+  }
+
+  .form-datepicker-day.selected {
+    @apply bg-primary text-white;
+  }
+
+  .form-datepicker-day.outside {
+    @apply text-aged-text-muted/50;
+  }
+
+  .form-datepicker-day.disabled {
+    @apply opacity-30 cursor-not-allowed;
+  }
+
+  /* Color Picker */
+  .form-colorpicker {
+    @apply relative inline-block;
+  }
+
+  .form-colorpicker-input {
+    @apply form-input w-20 h-10 p-0 cursor-pointer;
+  }
+
+  .form-colorpicker-swatch {
+    @apply absolute inset-0 rounded-md border border-aged-border;
+  }
+
+  .form-colorpicker-dropdown {
+    @apply absolute z-50 mt-1 bg-aged-paper border border-aged-border rounded-md shadow-lg p-2;
+  }
+
+  .form-colorpicker-grid {
+    @apply grid grid-cols-8 gap-1;
+  }
+
+  .form-colorpicker-color {
+    @apply aspect-square rounded border border-aged-border cursor-pointer
+           hover:scale-110 transition-transform duration-100;
+  }
+
+  .form-colorpicker-color.selected {
+    @apply ring-2 ring-primary ring-offset-2;
+  }
+
+  /* Rating */
+  .form-rating {
+    @apply inline-flex items-center gap-1;
+  }
+
+  .form-rating-input {
+    @apply sr-only;
+  }
+
+  .form-rating-star {
+    @apply text-aged-border cursor-pointer transition-colors duration-150;
+  }
+
+  .form-rating-star.filled {
+    @apply text-primary;
+  }
+
+  .form-rating-star.half-filled {
+    @apply relative;
+  }
+
+  .form-rating-star.half-filled::after {
+    content: '';
+    @apply absolute inset-0 bg-primary clip-polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  }
+
+  .form-rating:has(.form-rating-input:checked) .form-rating-star {
+    @apply text-aged-border;
+  }
+
+  .form-rating:has(.form-rating-input[value="1"]:checked) .form-rating-star:nth-child(-n+1),
+  .form-rating:has(.form-rating-input[value="2"]:checked) .form-rating-star:nth-child(-n+2),
+  .form-rating:has(.form-rating-input[value="3"]:checked) .form-rating-star:nth-child(-n+3),
+  .form-rating:has(.form-rating-input[value="4"]:checked) .form-rating-star:nth-child(-n+4),
+  .form-rating:has(.form-rating-input[value="5"]:checked) .form-rating-star:nth-child(-n+5) {
+    @apply text-primary;
+  }
+
+  /* Form Actions */
+  .form-actions {
+    @apply flex items-center justify-end gap-3 mt-6 pt-4 border-t border-aged-border;
+  }
+
+  .form-actions-left {
+    @apply justify-start;
+  }
+
+  .form-actions-center {
+    @apply justify-center;
+  }
+
+  .form-actions-stretch {
+    @apply flex-col gap-3;
+  }
+
+  .form-actions-stretch > * {
+    @apply w-full;
+  }
+
+  /* Form Section */
+  .form-section {
+    @apply mb-8 pb-6 border-b border-aged-border;
+  }
+
+  .form-section:last-child {
+    @apply border-b-0 pb-0;
+  }
+
+  .form-section-title {
+    @apply text-lg font-semibold text-aged-text mb-2;
+  }
+
+  .form-section-description {
+    @apply text-aged-text-muted text-sm mb-4;
+  }
+
+  /* Stepper/Form Wizard */
+  .form-stepper {
+    @apply flex items-center justify-between mb-8;
+  }
+
+  .form-stepper-step {
+    @apply flex flex-col items-center flex-1 relative;
+  }
+
+  .form-stepper-step:not(:last-child)::after {
+    content: '';
+    @apply absolute top-3 left-1/2 w-full h-0.5 bg-aged-border z-0;
+  }
+
+  .form-stepper-step.completed:not(:last-child)::after {
+    @apply bg-primary;
+  }
+
+  .form-stepper-circle {
+    @apply relative z-10 w-6 h-6 rounded-full border-2 border-aged-border bg-aged-paper
+           flex items-center justify-center text-sm font-medium text-aged-text-muted
+           transition-all duration-200;
+  }
+
+  .form-stepper-step.active .form-stepper-circle {
+    @apply border-primary bg-primary text-white;
+  }
+
+  .form-stepper-step.completed .form-stepper-circle {
+    @apply border-primary bg-primary text-white;
+  }
+
+  .form-stepper-step.completed .form-stepper-circle::after {
+    content: '✓';
+  }
+
+  .form-stepper-label {
+    @apply mt-2 text-sm text-aged-text-muted text-center transition-colors;
+  }
+
+  .form-stepper-step.active .form-stepper-label {
+    @apply text-aged-text font-medium;
+  }
+
+  .form-stepper-step.completed .form-stepper-label {
+    @apply text-aged-text;
+  }
+}

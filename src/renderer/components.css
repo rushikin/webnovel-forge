@@ -1,0 +1,42 @@
+@layer components {
+  .paper-card {
+    @apply bg-aged-paper rounded-xl shadow-xl p-6 border-muted-slate/30 text-text-primary;
+    transition: all 0.2s ease;
+  }
+
+  .paper-card:hover {
+    @apply shadow-2xl;
+  }
+
+  .book-spine {
+    @apply bg-aged-paper rounded-t-lg rounded-b-none shadow-xl p-4 border-muted-slate/30 text-text-primary;
+  }
+
+  .btn-paper {
+    @apply bg-aged-paper text-text-primary hover:bg-aged-paper-dark rounded-md px-4 py-2 font-medium transition;
+  }
+
+  .btn-paper:hover {
+    @apply bg-aged-paper-dark;
+  }
+
+  .input-field {
+    @apply bg-ink-night border-muted-slate/30 rounded-md p-2 focus:ring-lamp-gold focus:border-lamp-gold text-text-primary placeholder:text-muted-slate;
+  }
+
+  .chat-bubble {
+    @apply bg-aged-paper rounded-lg p-4 shadow-inner text-text-primary;
+  }
+
+  .chat-bubble.user {
+    @apply bg-lamp-gold/15 text-text-primary border border-lamp-gold/20;
+  }
+
+  .chat-bubble.assistant {
+    @apply bg-aged-paper text-text-primary;
+  }
+
+  .phase-seal {
+    @apply bg-wax-seal-red text-white rounded-full p-2 shadow-xl;
+  }
+}

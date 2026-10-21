@@ -1,0 +1,432 @@
+@layer components {
+  /* Paper Card */
+  .paper-card {
+    @apply bg-aged-paper border border-muted-slate/20 rounded-lg shadow-sm;
+    box-shadow: 0 1px 3px rgba(20, 23, 31, 0.08), 0 1px 2px rgba(20, 23, 31, 0.06);
+  }
+
+  .paper-card:hover {
+    @apply shadow-md;
+    box-shadow: 0 4px 6px rgba(20, 23, 31, 0.1), 0 2px 4px rgba(20, 23, 31, 0.06);
+  }
+
+  .paper-card-elevated {
+    @apply bg-aged-paper border border-muted-slate/20 rounded-xl shadow-lg;
+    box-shadow: 0 10px 15px rgba(20, 23, 31, 0.1), 0 4px 6px rgba(20, 23, 31, 0.05);
+  }
+
+  /* Book Spine */
+  .book-spine {
+    @apply relative flex flex-col items-center justify-between p-3 bg-aged-paper border border-muted-slate/20 rounded-t-lg rounded-b-none;
+    min-width: 48px;
+    max-width: 48px;
+    min-height: 200px;
+    box-shadow: inset -2px 0 4px rgba(20, 23, 31, 0.05);
+  }
+
+  .book-spine::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-1 bg-lamp-gold/30;
+  }
+
+  .book-spine-title {
+    @apply text-text-primary text-[10px] font-medium leading-tight text-center rotate-90 origin-center w-full h-full flex items-center justify-center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .book-spine-author {
+    @apply text-muted-slate text-[8px] text-center rotate-90 origin-center w-full flex items-center justify-center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .book-spine-active {
+    @apply border-l-2 border-lamp-gold;
+  }
+
+  .book-spine-active::after {
+    content: '';
+    @apply absolute bottom-0 left-0 right-0 h-1 bg-lamp-gold;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 bg-lamp-gold text-ink-night font-medium rounded-lg transition-all duration-200;
+    @apply hover:bg-lamp-gold-dim hover:shadow-lg hover:shadow-lamp-gold/30 active:scale-[0.98];
+    @apply focus:outline-none focus:ring-2 focus:ring-lamp-gold focus:ring-offset-2 focus:ring-offset-ink-night;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 bg-aged-paper-dark text-text-primary font-medium rounded-lg border border-muted-slate/30 transition-all duration-200;
+    @apply hover:bg-aged-paper hover:border-muted-slate/50 hover:shadow-md active:scale-[0.98];
+    @apply focus:outline-none focus:ring-2 focus:ring-muted-slate focus:ring-offset-2 focus:ring-offset-ink-night;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-3 py-1.5 text-muted-slate font-medium rounded-lg transition-all duration-200;
+    @apply hover:text-text-primary hover:bg-aged-paper-dark active:scale-[0.98];
+    @apply focus:outline-none focus:ring-2 focus:ring-muted-slate focus:ring-offset-2 focus:ring-offset-ink-night;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center px-4 py-2 bg-wax-seal-red text-aged-paper font-medium rounded-lg transition-all duration-200;
+    @apply hover:bg-[rgb(110,45,45)] hover:shadow-lg hover:shadow-wax-seal-red/30 active:scale-[0.98];
+    @apply focus:outline-none focus:ring-2 focus:ring-wax-seal-red focus:ring-offset-2 focus:ring-offset-ink-night;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none;
+  }
+
+  .btn-icon {
+    @apply inline-flex items-center justify-center p-2 rounded-lg transition-all duration-200;
+    @apply hover:bg-aged-paper-dark active:scale-[0.95];
+    @apply focus:outline-none focus:ring-2 focus:ring-muted-slate focus:ring-offset-2 focus:ring-offset-ink-night;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  /* Input Fields */
+  .input-field {
+    @apply w-full px-3 py-2 bg-aged-paper border border-muted-slate/30 rounded-lg text-text-primary placeholder-muted-slate/50 transition-all duration-200;
+    @apply hover:border-muted-slate/50 focus:outline-none focus:ring-2 focus:ring-lamp-gold focus:border-transparent;
+    @apply disabled:bg-aged-paper-dark disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .input-field-error {
+    @apply border-wax-seal-red focus:ring-wax-seal-red;
+  }
+
+  .input-field-success {
+    @apply border-jade-ink focus:ring-jade-ink;
+  }
+
+  .input-label {
+    @apply block text-sm font-medium text-text-primary mb-1;
+  }
+
+  .input-hint {
+    @apply text-xs text-muted-slate mt-1;
+  }
+
+  .input-error {
+    @apply text-xs text-wax-seal-red mt-1;
+  }
+
+  /* Chat Bubbles */
+  .chat-bubble {
+    @apply max-w-[80%] px-4 py-2.5 rounded-2xl;
+  }
+
+  .chat-bubble-user {
+    @apply bg-lamp-gold text-ink-night rounded-tr-none;
+    @apply ml-auto;
+  }
+
+  .chat-bubble-assistant {
+    @apply bg-aged-paper-dark text-text-primary border border-muted-slate/20 rounded-tl-none;
+  }
+
+  .chat-bubble-system {
+    @apply bg-wax-seal-red/10 text-wax-seal-red border border-wax-seal-red/20 rounded;
+    @apply mx-auto text-center max-w-full;
+  }
+
+  .chat-bubble-thinking {
+    @apply bg-aged-paper-dark text-muted-slate border border-muted-slate/20 rounded animate-pulse;
+  }
+
+  .chat-bubble-content {
+    @apply whitespace-pre-wrap break-words;
+  }
+
+  .chat-bubble-time {
+    @apply text-[10px] text-muted-slate/70 mt-1 text-right;
+  }
+
+  .chat-bubble-assistant .chat-bubble-time {
+    @apply text-left;
+  }
+
+  /* Phase Seal */
+  .phase-seal {
+    @apply relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-aged-paper border-2 border-lamp-gold/50 transition-all duration-300;
+  }
+
+  .phase-seal::before {
+    content: '';
+    @apply absolute inset-1 rounded-full border border-lamp-gold/20;
+  }
+
+  .phase-seal-active {
+    @apply border-lamp-gold bg-lamp-gold/10;
+    box-shadow: 0 0 12px rgba(216, 164, 72, 0.4), inset 0 0 12px rgba(216, 164, 72, 0.1);
+  }
+
+  .phase-seal-complete {
+    @apply border-jade-ink bg-jade-ink/10;
+  }
+
+  .phase-seal-complete::after {
+    content: '✓';
+    @apply text-jade-ink text-lg font-bold;
+  }
+
+  .phase-seal-pending {
+    @apply border-muted-slate/30 bg-aged-paper-dark;
+  }
+
+  .phase-seal-icon {
+    @apply text-lamp-gold text-xl;
+  }
+
+  .phase-seal-tooltip {
+    @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-ink-night text-aged-paper text-xs rounded shadow-lg whitespace-nowrap opacity-0 invisible transition-all duration-200;
+  }
+
+  .phase-seal:hover .phase-seal-tooltip {
+    @apply opacity-100 visible;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-lamp-gold/20 text-lamp-gold;
+  }
+
+  .badge-success {
+    @apply bg-jade-ink/20 text-jade-ink;
+  }
+
+  .badge-warning {
+    @apply bg-lamp-gold/20 text-lamp-gold;
+  }
+
+  .badge-danger {
+    @apply bg-wax-seal-red/20 text-wax-seal-red;
+  }
+
+  .badge-neutral {
+    @apply bg-muted-slate/20 text-muted-slate;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-muted-slate/20;
+  }
+
+  .divider-vertical {
+    @apply border-l border-muted-slate/20;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    @apply relative inline-block;
+  }
+
+  .tooltip-content {
+    @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-ink-night text-aged-paper text-sm rounded-lg shadow-lg whitespace-nowrap opacity-0 invisible transition-all duration-200 z-50;
+  }
+
+  .tooltip-content::after {
+    content: '';
+    @apply absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-ink-night;
+  }
+
+  .tooltip:hover .tooltip-content {
+    @apply opacity-100 visible;
+  }
+
+  /* Scroll Area */
+  .scroll-area {
+    @apply overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted-slate/30 hover:scrollbar-thumb-muted-slate/50;
+  }
+
+  /* Table */
+  .table-container {
+    @apply overflow-x-auto;
+  }
+
+  .table {
+    @apply w-full border-collapse;
+  }
+
+  .table th {
+    @apply px-4 py-2 text-left text-xs font-semibold text-muted-slate uppercase tracking-wider border-b border-muted-slate/20;
+  }
+
+  .table td {
+    @apply px-4 py-3 text-sm text-text-primary border-b border-muted-slate/10;
+  }
+
+  .table tr:hover td {
+    @apply bg-aged-paper-dark/50;
+  }
+
+  /* Card Grid */
+  .card-grid {
+    @apply grid gap-4;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  @media (max-width: 640px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Modal Overlay */
+  .modal-overlay {
+    @apply fixed inset-0 bg-ink-night/80 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+  }
+
+  .modal-content {
+    @apply bg-aged-paper rounded-xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-hidden;
+    animation: modal-enter 0.2s ease-out;
+  }
+
+  @keyframes modal-enter {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .modal-header {
+    @apply px-6 py-4 border-b border-muted-slate/20 flex items-center justify-between;
+  }
+
+  .modal-title {
+    @apply text-lg font-semibold text-text-primary;
+  }
+
+  .modal-close {
+    @apply p-1 rounded-lg text-muted-slate hover:text-text-primary hover:bg-aged-paper-dark transition-colors;
+  }
+
+  .modal-body {
+    @apply p-6 overflow-y-auto;
+  }
+
+  .modal-footer {
+    @apply px-6 py-4 border-t border-muted-slate/20 flex items-center justify-end gap-3;
+  }
+
+  /* Dropdown */
+  .dropdown {
+    @apply relative inline-block;
+  }
+
+  .dropdown-menu {
+    @apply absolute right-0 mt-1 min-w-[160px] bg-aged-paper border border-muted-slate/20 rounded-lg shadow-lg py-1 z-50 opacity-0 invisible transform translate-y-1 transition-all duration-150;
+  }
+
+  .dropdown.open .dropdown-menu {
+    @apply opacity-100 visible translate-y-0;
+  }
+
+  .dropdown-item {
+    @apply w-full px-4 py-2 text-sm text-text-primary hover:bg-aged-paper-dark transition-colors flex items-center gap-2;
+  }
+
+  .dropdown-divider {
+    @apply border-t border-muted-slate/20 my-1;
+  }
+
+  /* Tabs */
+  .tabs {
+    @apply flex border-b border-muted-slate/20;
+  }
+
+  .tab {
+    @apply px-4 py-2 text-sm font-medium text-muted-slate border-b-2 border-transparent hover:text-text-primary hover:border-lamp-gold/50 transition-all duration-200 cursor-pointer;
+  }
+
+  .tab-active {
+    @apply text-lamp-gold border-lamp-gold;
+  }
+
+  /* Accordion */
+  .accordion {
+    @apply border border-muted-slate/20 rounded-lg overflow-hidden;
+  }
+
+  .accordion-item {
+    @apply border-t border-muted-slate/20 first:border-t-0;
+  }
+
+  .accordion-trigger {
+    @apply w-full px-4 py-3 text-left font-medium text-text-primary bg-aged-paper hover:bg-aged-paper-dark transition-colors flex items-center justify-between;
+  }
+
+  .accordion-content {
+    @apply px-4 pb-4 text-sm text-muted-slate;
+  }
+
+  .accordion-icon {
+    @apply text-muted-slate transition-transform duration-200;
+  }
+
+  .accordion-open .accordion-icon {
+    @apply rotate-180;
+  }
+
+  /* Progress */
+  .progress {
+    @apply h-2 bg-aged-paper-dark rounded-full overflow-hidden;
+  }
+
+  .progress-bar {
+    @apply h-full bg-lamp-gold rounded-full transition-all duration-300 ease-out;
+  }
+
+  /* Avatar */
+  .avatar {
+    @apply inline-flex items-center justify-center rounded-full bg-lamp-gold/20 text-lamp-gold font-medium overflow-hidden;
+  }
+
+  .avatar-sm {
+    @apply w-8 h-8 text-xs;
+  }
+
+  .avatar-md {
+    @apply w-10 h-10 text-sm;
+  }
+
+  .avatar-lg {
+    @apply w-12 h-12 text-base;
+  }
+
+  .avatar-img {
+    @apply w-full h-full object-cover;
+  }
+
+  /* Separator */
+  .separator {
+    @apply relative flex items-center gap-4;
+  }
+
+  .separator::before,
+  .separator::after {
+    content: '';
+    @apply flex-1 border-t border-muted-slate/20;
+  }
+
+  .separator-text {
+    @apply text-xs text-muted-slate uppercase tracking-wider;
+  }
+}

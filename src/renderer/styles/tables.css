@@ -1,0 +1,510 @@
+@layer tables {
+  /* Table Base */
+  .table {
+    @apply w-full border-collapse text-sm;
+  }
+
+  .table th,
+  .table td {
+    @apply px-4 py-3 text-left align-top border-b border-aged-border;
+  }
+
+  .table thead th {
+    @apply bg-aged-border/50 font-semibold text-aged-text uppercase tracking-wider text-xs;
+  }
+
+  .table tbody tr {
+    @apply transition-colors duration-150;
+  }
+
+  .table tbody tr:hover {
+    @apply bg-aged-border/30;
+  }
+
+  .table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  /* Table Variants */
+  .table-striped tbody tr:nth-child(odd) {
+    @apply bg-aged-border/20;
+  }
+
+  .table-striped tbody tr:nth-child(odd):hover {
+    @apply bg-aged-border/40;
+  }
+
+  .table-bordered {
+    @apply border border-aged-border;
+  }
+
+  .table-bordered th,
+  .table-bordered td {
+    @apply border border-aged-border;
+  }
+
+  .table-hover tbody tr:hover {
+    @apply bg-primary/5;
+  }
+
+  .table-sm th,
+  .table-sm td {
+    @apply px-3 py-2;
+  }
+
+  .table-lg th,
+  .table-lg td {
+    @apply px-6 py-4;
+  }
+
+  /* Table States */
+  .table-active tbody tr.selected {
+    @apply bg-primary/10;
+  }
+
+  .table-active tbody tr.selected:hover {
+    @apply bg-primary/20;
+  }
+
+  /* Table with Caption */
+  .table-caption {
+    @apply caption-top text-sm text-aged-text-muted mt-4 mb-2;
+  }
+
+  /* Responsive Table */
+  .table-responsive {
+    @apply overflow-x-auto -mx-4 px-4;
+  }
+
+  .table-responsive .table {
+    @apply min-w-full;
+  }
+
+  /* Fixed Header Table */
+  .table-fixed-header {
+    @apply relative;
+  }
+
+  .table-fixed-header thead {
+    @apply sticky top-0 z-10 bg-aged-paper;
+  }
+
+  .table-fixed-header thead th {
+    @apply shadow-sm;
+  }
+
+  /* Column Alignment */
+  .table-col-center td,
+  .table-col-center th {
+    @apply text-center;
+  }
+
+  .table-col-right td,
+  .table-col-right th {
+    @apply text-right;
+  }
+
+  .table-col-nowrap td,
+  .table-col-nowrap th {
+    @apply whitespace-nowrap;
+  }
+
+  /* Cell Content */
+  .table-cell-wrap {
+    @apply max-w-xs truncate;
+  }
+
+  .table-cell-action {
+    @apply whitespace-nowrap;
+  }
+
+  .table-cell-badge {
+    @apply whitespace-nowrap;
+  }
+
+  .table-cell-avatar {
+    @apply w-10 h-10 rounded-full object-cover;
+  }
+
+  .table-cell-status {
+    @apply whitespace-nowrap;
+  }
+
+  /* Sortable Columns */
+  .table-sortable th {
+    @apply cursor-pointer select-none;
+  }
+
+  .table-sortable th:hover {
+    @apply bg-aged-border/70;
+  }
+
+  .table-sortable th.sorted-asc::after {
+    content: ' ▲';
+    @apply text-primary;
+  }
+
+  .table-sortable th.sorted-desc::after {
+    content: ' ▼';
+    @apply text-primary;
+  }
+
+  .table-sortable th:not(.sorted-asc):not(.sorted-desc)::after {
+    content: ' ⇅';
+    @apply text-aged-text-muted text-xs ml-1;
+  }
+
+  /* Expandable Rows */
+  .table-expandable .expand-trigger {
+    @apply cursor-pointer;
+  }
+
+  .table-expandable .expand-content {
+    @apply hidden;
+  }
+
+  .table-expandable .expanded .expand-content {
+    @apply table-row;
+  }
+
+  .table-expandable .expanded .expand-trigger::before {
+    content: '▼';
+    @apply transform rotate-180;
+  }
+
+  .table-expandable .expand-trigger::before {
+    content: '▶';
+    @apply inline-block transition-transform duration-150;
+  }
+
+  /* Table Footer */
+  .table tfoot th,
+  .table tfoot td {
+    @apply border-t-2 border-aged-border bg-aged-border/30 font-medium;
+  }
+
+  /* Empty State */
+  .table-empty {
+    @apply text-center py-12 text-aged-text-muted;
+  }
+
+  .table-empty-icon {
+    @apply mx-auto mb-3 text-aged-border w-12 h-12;
+  }
+
+  .table-empty-title {
+    @apply text-lg font-medium text-aged-text mb-1;
+  }
+
+  .table-empty-description {
+    @apply text-sm max-w-md mx-auto;
+  }
+
+  /* Loading State */
+  .table-loading {
+    @apply relative;
+  }
+
+  .table-loading::after {
+    content: '';
+    @apply absolute inset-0 bg-white/50 flex items-center justify-center z-10;
+  }
+
+  .table-loading .skeleton-row {
+    @apply animate-pulse;
+  }
+
+  .table-loading .skeleton-cell {
+    @apply h-4 bg-aged-border/50 rounded;
+  }
+
+  /* Virtualized Table Container */
+  .table-virtualized {
+    @apply relative overflow-auto;
+  }
+
+  .table-virtualized .table {
+    @apply min-w-full;
+  }
+
+  /* Column Resizing */
+  .table-resizable th {
+    @apply relative;
+  }
+
+  .table-resizable .resize-handle {
+    @apply absolute right-0 top-0 bottom-0 w-1 cursor-col-resize opacity-0
+           hover:opacity-100 transition-opacity;
+  }
+
+  .table-resizable .resize-handle::after {
+    content: '';
+    @apply absolute right-1 top-2 bottom-2 w-0.5 bg-aged-border rounded;
+  }
+
+  .table-resizable .resizing .resize-handle {
+    @apply opacity-100;
+  }
+
+  /* Row Selection */
+  .table-selectable .select-col {
+    @apply w-12 text-center;
+  }
+
+  .table-selectable .select-all {
+    @apply form-checkbox;
+  }
+
+  .table-selectable .select-row {
+    @apply form-checkbox;
+  }
+
+  .table-selectable tbody tr.selected {
+    @apply bg-primary/5;
+  }
+
+  .table-selectable tbody tr.selected:hover {
+    @apply bg-primary/10;
+  }
+
+  /* Table Toolbar */
+  .table-toolbar {
+    @apply flex flex-wrap items-center justify-between gap-4 mb-4;
+  }
+
+  .table-toolbar-search {
+    @apply flex-1 min-w-[200px] max-w-xs;
+  }
+
+  .table-toolbar-actions {
+    @apply flex items-center gap-2;
+  }
+
+  .table-toolbar-info {
+    @apply text-sm text-aged-text-muted;
+  }
+
+  /* Pagination */
+  .table-pagination {
+    @apply flex items-center justify-between mt-4 gap-4;
+  }
+
+  .table-pagination-info {
+    @apply text-sm text-aged-text-muted;
+  }
+
+  .table-pagination-controls {
+    @apply flex items-center gap-1;
+  }
+
+  .table-pagination-btn {
+    @apply p-2 rounded-md text-aged-text-muted hover:text-aged-text hover:bg-aged-border/50
+           transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .table-pagination-btn.active {
+    @apply bg-primary text-white hover:bg-primary-hover;
+  }
+
+  .table-pagination-size {
+    @apply form-select-sm w-auto;
+  }
+
+  /* Column Visibility */
+  .table-column-toggle {
+    @apply relative;
+  }
+
+  .table-column-toggle-btn {
+    @apply btn-secondary;
+  }
+
+  .table-column-toggle-dropdown {
+    @apply absolute right-0 mt-1 w-48 bg-aged-paper border border-aged-border rounded-md shadow-lg
+           py-1 z-50;
+  }
+
+  .table-column-toggle-item {
+    @apply flex items-center gap-2 px-3 py-2 hover:bg-aged-border/50 cursor-pointer;
+  }
+
+  .table-column-toggle-item input {
+    @apply form-checkbox;
+  }
+
+  /* Table Card Wrapper */
+  .table-card {
+    @apply bg-aged-paper border border-aged-border rounded-lg overflow-hidden;
+  }
+
+  .table-card-header {
+    @apply px-6 py-4 border-b border-aged-border flex items-center justify-between;
+  }
+
+  .table-card-title {
+    @apply text-lg font-semibold text-aged-text;
+  }
+
+  .table-card-actions {
+    @apply flex items-center gap-2;
+  }
+
+  .table-card-body {
+    @apply p-0;
+  }
+
+  .table-card-footer {
+    @apply px-6 py-4 border-t border-aged-border flex items-center justify-between;
+  }
+
+  /* Data Grid (Advanced) */
+  .data-grid {
+    @apply bg-aged-paper border border-aged-border rounded-lg overflow-hidden;
+  }
+
+  .data-grid-header {
+    @apply px-4 py-3 border-b border-aged-border flex items-center justify-between bg-aged-border/30;
+  }
+
+  .data-grid-toolbar {
+    @apply flex flex-wrap items-center gap-3;
+  }
+
+  .data-grid-filters {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .data-grid-filter {
+    @apply form-select-sm;
+  }
+
+  .data-grid-content {
+    @apply overflow-auto;
+  }
+
+  .data-grid-row {
+    @apply grid gap-0 border-b border-aged-border/50 transition-colors;
+  }
+
+  .data-grid-row:hover {
+    @apply bg-aged-border/30;
+  }
+
+  .data-grid-row.selected {
+    @apply bg-primary/5;
+  }
+
+  .data-grid-cell {
+    @apply px-4 py-3 flex items-center min-w-0;
+  }
+
+  .data-grid-cell.header {
+    @apply font-semibold text-aged-text uppercase tracking-wider text-xs bg-aged-border/50;
+  }
+
+  /* Tree Table */
+  .tree-table {
+    @apply table;
+  }
+
+  .tree-table .tree-indent {
+    @apply inline-block;
+  }
+
+  .tree-table .tree-toggle {
+    @apply inline-flex items-center justify-center w-6 h-6 text-aged-text-muted
+           hover:text-aged-text transition-colors rounded;
+  }
+
+  .tree-table .tree-toggle.expanded {
+    @apply transform rotate-90;
+  }
+
+  .tree-table .tree-children {
+    @apply hidden;
+  }
+
+  .tree-table .tree-children.expanded {
+    @apply table-row-group;
+  }
+
+  /* Comparison Table */
+  .comparison-table {
+    @apply table table-bordered;
+  }
+
+  .comparison-table th:first-child {
+    @apply w-48 font-semibold text-aged-text bg-aged-border/30 sticky left-0 z-10;
+  }
+
+  .comparison-table td:first-child {
+    @apply font-medium text-aged-text bg-aged-border/20 sticky left-0 z-10;
+  }
+
+  .comparison-table .highlight-best {
+    @apply bg-jade-50 text-jade-700 font-medium;
+  }
+
+  .comparison-table .highlight-worst {
+    @apply bg-red-50 text-red-700;
+  }
+
+  /* Pricing Table */
+  .pricing-table {
+    @apply table table-bordered;
+  }
+
+  .pricing-table thead th {
+    @apply text-center py-6;
+  }
+
+  .pricing-table .plan-name {
+    @apply text-lg font-semibold;
+  }
+
+  .pricing-table .plan-price {
+    @apply text-4xl font-bold text-aged-text mt-2;
+  }
+
+  .pricing-table .plan-period {
+    @apply text-aged-text-muted;
+  }
+
+  .pricing-table .plan-features {
+    @apply space-y-3;
+  }
+
+  .pricing-table .plan-feature {
+    @apply flex items-center gap-2 text-sm;
+  }
+
+  .pricing-table .plan-feature.included {
+    @apply text-jade-600;
+  }
+
+  .pricing-table .plan-feature.excluded {
+    @apply text-aged-text-muted line-through;
+  }
+
+  .pricing-table .plan-cta {
+    @apply mt-6;
+  }
+
+  .pricing-table .plan-popular {
+    @apply relative;
+  }
+
+  .pricing-table .plan-popular::before {
+    content: 'Most Popular';
+    @apply absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs
+           px-2 py-0.5 rounded-full;
+  }
+
+  .pricing-table .plan-popular th {
+    @apply bg-primary text-white;
+  }
+
+  .pricing-table .plan-popular td {
+    @apply border-primary/20;
+  }
+}

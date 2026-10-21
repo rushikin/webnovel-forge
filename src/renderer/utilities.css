@@ -1,0 +1,29 @@
+@layer utilities {
+  .animation-fade {
+    @apply transition-opacity duration-300;
+  }
+
+  .animation-slide-up {
+    @apply transition-transform duration-300 ease-out;
+  }
+
+  .scrollbar {
+    @apply scrollbar-thumb-hide;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    @apply w-1 h-4 bg-muted-slate/30 rounded-full;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-muted-slate/50 rounded-full;
+  }
+
+  .typography-heading {
+    @apply text-2xl font-bold tracking-tight text-text-primary;
+  }
+
+  .typography-body {
+    @apply text-lg text-text-primary leading-relaxed;
+  }
+}

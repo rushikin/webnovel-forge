@@ -1,0 +1,184 @@
+/**
+ * WebNovel Forge — Global Design Tokens
+ * Per Screen 1-8 spec: exact 8 colors + surfaces, dark mode only
+ * Violet #7C6FCD appears ONLY on Screen 7/8 (AI Video module)
+ */
+
+:root {
+  /* Obsidian Dark Mode RGB Tuples */
+  --ink-night-rgb: 20, 21, 25;
+  --aged-paper-rgb: 26, 28, 35;
+  --aged-paper-dark-rgb: 16, 17, 21;
+  --lamp-gold-rgb: 201, 168, 76;
+  --lamp-gold-dim-rgb: 184, 148, 58;
+  --wax-seal-red-rgb: 224, 82, 82;
+  --jade-ink-rgb: 76, 175, 125;
+  --accent-violet-rgb: 124, 111, 205;
+  --muted-slate-rgb: 130, 139, 158;
+  --text-primary-rgb: 232, 234, 240;
+  --text-muted-rgb: 130, 139, 158;
+
+  /* Surfaces & Backgrounds */
+  --bg-primary: rgb(var(--ink-night-rgb));
+  --bg-secondary: rgb(var(--aged-paper-dark-rgb));
+  --bg-card: rgb(var(--aged-paper-rgb));
+  --bg-input: rgb(var(--aged-paper-dark-rgb));
+
+  /* Accents */
+  --accent-gold: rgb(var(--lamp-gold-rgb));
+  --accent-green: rgb(var(--jade-ink-rgb));
+  --accent-red: rgb(var(--wax-seal-red-rgb));
+  --accent-violet: rgb(var(--accent-violet-rgb));
+
+  /* Text & Borders */
+  --text-primary: rgb(var(--text-primary-rgb));
+  --text-muted: rgb(var(--text-muted-rgb));
+  --border: rgba(255, 255, 255, 0.08);
+
+  /* Legacy aliases */
+  --ink-night: var(--bg-primary);
+  --lamp-gold: var(--accent-gold);
+  --lamp-gold-dim: rgb(var(--lamp-gold-dim-rgb));
+  --wax-seal-red: var(--accent-red);
+  --jade-ink: var(--accent-green);
+  --muted-slate: var(--text-muted);
+  --aged-paper: var(--bg-card);
+  --aged-paper-dark: var(--bg-secondary);
+}
+
+/* Obsidian Light Mode — Clean, high-contrast, modern knowledge-base note theme */
+.light {
+  /* Obsidian Light Mode RGB Tuples */
+  --ink-night-rgb: 248, 249, 250;
+  --aged-paper-rgb: 255, 255, 255;
+  --aged-paper-dark-rgb: 237, 239, 242;
+  --lamp-gold-rgb: 180, 83, 9;
+  --lamp-gold-dim-rgb: 146, 64, 14;
+  --wax-seal-red-rgb: 220, 38, 38;
+  --jade-ink-rgb: 5, 150, 105;
+  --accent-violet-rgb: 124, 58, 237;
+  --muted-slate-rgb: 100, 116, 139;
+  --text-primary-rgb: 26, 29, 36;
+  --text-muted-rgb: 100, 116, 139;
+
+  /* Surfaces & Backgrounds */
+  --bg-primary: rgb(var(--ink-night-rgb));
+  --bg-secondary: rgb(var(--aged-paper-dark-rgb));
+  --bg-card: rgb(var(--aged-paper-rgb));
+  --bg-input: rgb(var(--aged-paper-rgb));
+
+  /* Accents */
+  --accent-gold: rgb(var(--lamp-gold-rgb));
+  --accent-green: rgb(var(--jade-ink-rgb));
+  --accent-red: rgb(var(--wax-seal-red-rgb));
+  --accent-violet: rgb(var(--accent-violet-rgb));
+
+  /* Text & Borders */
+  --text-primary: rgb(var(--text-primary-rgb));
+  --text-muted: rgb(var(--text-muted-rgb));
+  --border: rgba(15, 23, 42, 0.1);
+
+  /* Legacy aliases */
+  --ink-night: var(--bg-primary);
+  --lamp-gold: var(--accent-gold);
+  --lamp-gold-dim: rgb(var(--lamp-gold-dim-rgb));
+  --wax-seal-red: var(--accent-red);
+  --jade-ink: var(--accent-green);
+  --muted-slate: var(--text-muted);
+  --aged-paper: var(--bg-card);
+  --aged-paper-dark: var(--bg-secondary);
+}
+
+/* Surfaces & Shadows (spec) */
+.card-shadow {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.modal-shadow {
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+}
+
+/* Active tab indicator */
+.active-tab {
+  border-bottom: 2px solid var(--accent-gold);
+}
+
+/* Animations per spec — 0.15s buttons, slide+fade, dots pulse, gold glow, violet fill */
+button,
+.btn-primary,
+.btn-secondary,
+.btn-ghost {
+  transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.16s ease,
+              border-color 0.16s ease,
+              box-shadow 0.16s ease,
+              opacity 0.16s ease;
+}
+
+button:active,
+.btn-primary:active,
+.btn-secondary:active,
+.btn-ghost:active {
+  transform: scale(0.96);
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes springPop {
+  0% { transform: scale(0.92); opacity: 0; }
+  65% { transform: scale(1.03); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shimmerSweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.04); opacity: 1; }
+}
+
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(201, 168, 76, 0); }
+}
+
+@keyframes goldGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(201, 168, 76, 0); }
+}
+
+@keyframes violetFill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes dotsPulse {
+  0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+.dots-pulse span {
+  animation: dotsPulse 1.4s infinite ease-in-out;
+}
+
+.dots-pulse span:nth-child(1) { animation-delay: 0s; }
+.dots-pulse span:nth-child(2) { animation-delay: 0.2s; }
+.dots-pulse span:nth-child(3) { animation-delay: 0.4s; }
+
+/* Shimmer gradient utility */
+.shimmer-active {
+  background: linear-gradient(90deg, rgba(201,168,76,0.05) 0%, rgba(201,168,76,0.25) 50%, rgba(201,168,76,0.05) 100%);
+  background-size: 200% 100%;
+  animation: shimmerSweep 2.2s infinite ease-in-out;
+}

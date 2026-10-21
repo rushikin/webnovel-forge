@@ -1,0 +1,83 @@
+{
+  "name": "webnovel-forge",
+  "version": "2.0.0",
+  "description": "WebNovel Forge - AI-powered desktop app for writing web novels",
+  "author": "WebNovel Forge <forge@webnovel.local>",
+  "main": "dist/main/main.js",
+  "build": {
+    "appId": "com.webnovel.forge",
+    "productName": "WebNovel Forge",
+    "files": [
+      "dist/**/*",
+      "!dist/win-unpacked/**",
+      "!dist/win-unpacked.tmp/**",
+      "!dist_new/**",
+      "!release/**",
+      "!out/**",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "release"
+    },
+    "extraResources": [
+      {
+        "from": "node_modules/sql.js/dist/sql-wasm.wasm",
+        "to": "sql-wasm.wasm"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "artifactName": "${productName} Setup ${version}.${ext}",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/sql.js/dist/sql-wasm.wasm"
+    ]
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:main\" \"npm run dev:renderer\"",
+    "dev:main": "tsc -w -p tsconfig.main.json",
+    "dev:renderer": "vite",
+    "build": "npm run build:main && npm run build:renderer",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "tsc -p tsconfig.renderer.json && vite build",
+    "dist": "npm run build && electron-builder",
+    "preview": "vite preview",
+    "lint": "eslint src --ext ts,tsx",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sql.js": "^1.14.1",
+    "uuid": "^9.0.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@types/uuid": "^9.0.7",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
+    "concurrently": "^8.2.2",
+    "electron": "^28.2.0",
+    "electron-builder": "^26.15.3",
+    "eslint": "^8.57.1",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vite-plugin-electron": "^0.28.4",
+    "vite-plugin-electron-renderer": "^0.14.5"
+  }
+}

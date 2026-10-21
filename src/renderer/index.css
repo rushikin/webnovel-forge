@@ -1,0 +1,222 @@
+@import './styles/tokens.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-muted-slate/20;
+  }
+
+  body {
+    @apply bg-ink-night text-text-primary antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  /* Paper Card - the fundamental content surface */
+  .paper-card {
+    @apply bg-aged-paper text-text-primary rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.3)] border border-muted-slate/10;
+  }
+
+  .paper-card-hover {
+    @apply transition-shadow duration-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)];
+  }
+
+  /* Book spine for library */
+  .book-spine {
+    @apply relative w-16 h-64 paper-card flex flex-col items-center justify-between p-3 cursor-pointer transition-all duration-200;
+  }
+
+  .book-spine::before {
+    @apply content-[''] absolute top-0 left-0 right-0 h-1 rounded-t-xl;
+    background: var(--wax-seal-red);
+    opacity: 0;
+    @apply transition-opacity duration-200;
+  }
+
+  .book-spine.complete::before {
+    opacity: 1;
+  }
+
+  .book-spine:hover {
+    @apply -translate-y-2 shadow-[0_12px_40px_rgba(0,0,0,0.5)];
+    z-index: 10;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-lamp-gold text-ink-night font-medium px-6 py-3 rounded-lg
+           transition-all duration-200 hover:bg-lamp-gold-dim hover:shadow-[0_4px_20px_rgba(216,164,72,0.3)]
+           focus:outline-none focus:ring-2 focus:ring-lamp-gold focus:ring-offset-2 focus:ring-offset-ink-night
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-lamp-gold;
+  }
+
+  .btn-secondary {
+    @apply bg-aged-paper-dark text-text-primary font-medium px-6 py-3 rounded-lg border border-muted-slate/20
+           transition-all duration-200 hover:bg-aged-paper hover:border-muted-slate/40
+           focus:outline-none focus:ring-2 focus:ring-muted-slate focus:ring-offset-2 focus:ring-offset-ink-night
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-destructive {
+    @apply bg-wax-seal-red text-white font-medium px-6 py-3 rounded-lg
+           transition-all duration-200 hover:bg-[#A04040] hover:shadow-[0_4px_20px_rgba(140,59,59,0.3)]
+           focus:outline-none focus:ring-2 focus:ring-wax-seal-red focus:ring-offset-2 focus:ring-offset-ink-night;
+  }
+
+  .btn-ghost {
+    @apply text-muted-slate hover:text-text-primary px-4 py-2 rounded-lg
+           transition-colors duration-200 hover:bg-aged-paper/10
+           focus:outline-none focus:ring-2 focus:ring-muted-slate focus:ring-offset-2 focus:ring-offset-ink-night;
+  }
+
+  /* Inputs */
+  .input-field {
+    @apply w-full bg-ink-night/50 border border-muted-slate/20 rounded-lg px-4 py-3 text-text-primary
+           placeholder:text-muted-slate
+           focus:outline-none focus:border-lamp-gold focus:ring-2 focus:ring-lamp-gold/20
+           transition-all duration-200;
+  }
+
+  .textarea-field {
+    @apply input-field resize-y min-h-[120px] font-sans;
+  }
+
+  /* Chat bubbles */
+  .chat-bubble-user {
+    @apply bg-lamp-gold/15 text-text-primary rounded-2xl rounded-br-md px-4 py-3 max-w-[80%] ml-auto border border-lamp-gold/20;
+  }
+
+  .chat-bubble-assistant {
+    @apply bg-aged-paper text-text-primary rounded-2xl rounded-bl-md px-4 py-3 max-w-[85%] mr-auto border border-muted-slate/10;
+  }
+
+  /* Obsidian sleek scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(var(--muted-slate-rgb), 0.25);
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--muted-slate-rgb), 0.45);
+  }
+
+  /* Obsidian living document note typography */
+  .obsidian-note-prose {
+    line-height: 1.8;
+    color: var(--text-primary);
+  }
+  .obsidian-note-prose h1, .obsidian-note-prose h2, .obsidian-note-prose h3 {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .obsidian-note-prose p {
+    margin-bottom: 1.25rem;
+  }
+  .obsidian-note-prose blockquote {
+    border-left: 3px solid var(--lamp-gold);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  /* Typography */
+  .font-display {
+    font-family: 'Fraunces', serif;
+  }
+
+  .font-manuscript {
+    font-family: 'Lora', serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Phase seal indicator */
+  .phase-seal {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border-2;
+  }
+
+  .phase-seal.locked {
+    @apply border-wax-seal-red text-wax-seal-red bg-ink-night;
+  }
+
+  .phase-seal.in-progress {
+    @apply border-lamp-gold text-lamp-gold bg-ink-night;
+  }
+
+  .phase-seal.complete {
+    @apply border-jade-ink text-jade-ink bg-ink-night;
+  }
+
+  /* Layout containers */
+  .app-shell {
+    @apply h-screen w-screen flex flex-col bg-ink-night overflow-hidden;
+  }
+
+  .split-panel {
+    @apply flex h-full overflow-hidden;
+  }
+
+  .panel-left {
+    @apply w-1/2 h-full flex flex-col border-r border-muted-slate/10;
+  }
+
+  .panel-right {
+    @apply w-1/2 h-full flex flex-col overflow-hidden;
+  }
+
+  .panel-narrow {
+    @apply w-64 h-full flex flex-col border-l border-muted-slate/10 bg-ink-night/50;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-pulse-gold {
+    animation: pulseGold 2s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulseGold {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(216, 164, 72, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(216, 164, 72, 0); }
+  }
+}
