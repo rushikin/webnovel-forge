@@ -98,11 +98,88 @@ WebNovel Forge incorporates rigorous defense-in-depth engineering verified throu
 
 WebNovel Forge is engineered for native performance across Windows, macOS, and Linux:
 
-| Platform | Format | Architecture | Status |
-|---|---|---|---|
-| **Windows** | `.exe` (NSIS Installer & Portable) | x64 | ✅ Supported |
-| **macOS** | `.dmg` & `.zip` | Apple Silicon (M1/M2/M3/M4) & Intel x64 | ✅ Supported |
-| **Linux** | `.AppImage` & `.deb` | x64 (Ubuntu, Debian, Fedora, Arch) | ✅ Supported |
+| Platform | Format | Architecture | Status | Direct Download / CLI |
+|---|---|---|---|---|
+| **Windows** | `.exe` (NSIS Installer & Portable) | x64 | ✅ Supported | [Download Setup .exe](https://github.com/rushikin/webnovel-forge/releases/tag/v2.0.0) |
+| **macOS** | `.dmg` & `.zip` | Apple Silicon (M1/M2/M3/M4) & Intel x64 | ✅ Supported | `npm run dist:mac` / `./LAUNCHER.sh` |
+| **Linux** | `.AppImage` & `.deb` | x64 (Ubuntu, Debian, Fedora, Arch) | ✅ Supported | `npm run dist:linux` / `./LAUNCHER.sh` |
+
+---
+
+## 💻 CLI Download & Install Commands (By Operating System)
+
+Choose your OS below to download, install, or launch WebNovel Forge directly from your terminal:
+
+### 🪟 Windows (PowerShell / CMD)
+
+**PowerShell One-Liner (Download & Launch Installer):**
+```powershell
+Invoke-WebRequest -Uri "https://github.com/rushikin/webnovel-forge/releases/download/v2.0.0/WebNovel.Forge.Setup.2.0.0.exe" -OutFile "$env:TEMP\WebNovelForgeSetup.exe"; Start-Process "$env:TEMP\WebNovelForgeSetup.exe"
+```
+
+**Command Prompt / curl:**
+```cmd
+curl -L -o "%TEMP%\WebNovelForgeSetup.exe" "https://github.com/rushikin/webnovel-forge/releases/download/v2.0.0/WebNovel.Forge.Setup.2.0.0.exe" && "%TEMP%\WebNovelForgeSetup.exe"
+```
+
+**Developer Clone & One-Click Start:**
+```cmd
+git clone https://github.com/rushikin/webnovel-forge.git && cd webnovel-forge && npm install && RUN_SINGLE_FILE.bat
+```
+
+---
+
+### 🍎 macOS (Terminal / zsh / bash)
+
+**One-Liner Clone & Launch:**
+```bash
+git clone https://github.com/rushikin/webnovel-forge.git && cd webnovel-forge && npm install && chmod +x LAUNCHER.sh && ./LAUNCHER.sh
+```
+
+**Build Standalone macOS `.dmg` Installer Locally:**
+```bash
+npm run dist:mac
+# Output will be located in: release/WebNovel-Forge-2.0.0-mac.dmg
+```
+
+**Start in Development Mode:**
+```bash
+./LAUNCHER.sh --dev
+```
+
+---
+
+### 🐧 Linux (Ubuntu, Debian, Fedora, Arch)
+
+**One-Liner Clone & Launch:**
+```bash
+git clone https://github.com/rushikin/webnovel-forge.git && cd webnovel-forge && npm install && chmod +x LAUNCHER.sh && ./LAUNCHER.sh
+```
+
+**Build Native `.AppImage` & `.deb` Packages Locally:**
+```bash
+npm run dist:linux
+# Outputs generated in release/:
+#   - release/WebNovel-Forge-2.0.0-linux.AppImage
+#   - release/WebNovel-Forge-2.0.0-linux.deb
+```
+
+**Install the `.deb` package (Debian / Ubuntu / Mint):**
+```bash
+sudo dpkg -i release/WebNovel-Forge-2.0.0-linux.deb
+```
+
+---
+
+### 🐙 GitHub CLI (`gh`) — Universal
+
+```bash
+# Clone the repository
+gh repo clone rushikin/webnovel-forge
+
+# Or download latest release assets
+gh release download v2.0.0 --repo rushikin/webnovel-forge
+```
 
 ---
 
