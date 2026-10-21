@@ -6,7 +6,9 @@
 ### AI-Powered Web Novel Studio & Multi-Engine Animation Suite
 
 [![Version](https://img.shields.io/badge/version-2.0.0-gold.svg?style=for-the-badge)](package.json)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20x64%20%7C%20Electron-blue.svg?style=for-the-badge&logo=windows)](release/)
+[![Windows](https://img.shields.io/badge/Windows-x64%20%7C%20NSIS-0078D6.svg?style=for-the-badge&logo=windows)](release/)
+[![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon%20%26%20Intel-000000.svg?style=for-the-badge&logo=apple)](release/)
+[![Linux](https://img.shields.io/badge/Linux-AppImage%20%26%20deb-FCC624.svg?style=for-the-badge&logo=linux&logoColor=black)](release/)
 [![React](https://img.shields.io/badge/React-18.2-61DAFB.svg?style=for-the-badge&logo=react)](src/renderer/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6.svg?style=for-the-badge&logo=typescript)](tsconfig.json)
 [![Vite](https://img.shields.io/badge/Vite-5.0-646CFF.svg?style=for-the-badge&logo=vite)](vite.config.ts)
@@ -92,54 +94,59 @@ WebNovel Forge incorporates rigorous defense-in-depth engineering verified throu
 
 ---
 
-## 📦 Installation & Downloads
+## 📦 Installation & Supported Platforms
 
-### Windows (x64)
-Download the latest Windows installer:
-* **[Download WebNovel Forge Setup 2.0.0.exe](https://github.com/rushikin/webnovel-forge/raw/main/release/WebNovel%20Forge%20Setup%202.0.0.exe)** *(or compile locally below)*
-* **File Size**: ~464 MB
-* **Requirements**: Windows 10 / 11 (64-bit)
+WebNovel Forge is engineered for native performance across Windows, macOS, and Linux:
+
+| Platform | Format | Architecture | Status |
+|---|---|---|---|
+| **Windows** | `.exe` (NSIS Installer & Portable) | x64 | ✅ Supported |
+| **macOS** | `.dmg` & `.zip` | Apple Silicon (M1/M2/M3/M4) & Intel x64 | ✅ Supported |
+| **Linux** | `.AppImage` & `.deb` | x64 (Ubuntu, Debian, Fedora, Arch) | ✅ Supported |
 
 ---
 
-## 🚀 Developer Quickstart
+## 🚀 Quickstart
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) (v18.x or v20.x recommended)
+- [Node.js](https://nodejs.org/) (v18.x or v20.x LTS)
 - [npm](https://www.npmjs.com/) (v9.x or v10.x)
+- *(Optional for Video Trailers)* [FFmpeg](https://ffmpeg.org/)
 - *(Optional for Local AI)* [Ollama](https://ollama.com/) running locally on port 11434
-- *(Optional for Manim Animation)* Python 3.10+ with `manim` installed
 
-### Setup & Run
+### 1. Clone & Setup
+```bash
+git clone https://github.com/rushikin/webnovel-forge.git
+cd webnovel-forge
+npm install
+```
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/rushikin/webnovel-forge.git
-   cd webnovel-forge
-   ```
+### 2. Single-Command Launchers
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+* **On Linux / macOS:**
+  ```bash
+  chmod +x LAUNCHER.sh
+  ./LAUNCHER.sh          # Starts built app
+  ./LAUNCHER.sh --dev    # Starts in development mode
+  ```
 
-3. **Launch development environment:**
-   ```bash
-   npm run dev
-   ```
-   *Spins up Vite dev server at `http://localhost:5173` and Electron main process concurrently.*
+* **On Windows:**
+  ```cmd
+  RUN_SINGLE_FILE.bat    # Or: node LAUNCHER.js
+  ```
 
-4. **Run TypeScript typecheck & linter:**
-   ```bash
-   npm run typecheck
-   npm run lint
-   ```
+### 3. Build Executables & Installers
 
-5. **Build production installer:**
-   ```bash
-   npm run dist
-   ```
-   *Generates Windows NSIS installer in the `release/` directory.*
+```bash
+# Build for your current host operating system
+npm run dist
+
+# Target-specific packaging commands
+npm run dist:win      # Windows Setup .exe (NSIS)
+npm run dist:mac      # macOS .dmg & .zip (Universal)
+npm run dist:linux    # Linux .AppImage & .deb
+npm run dist:all      # Package all platform distributions
+```
 
 ---
 

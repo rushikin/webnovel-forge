@@ -30,7 +30,15 @@ if (!hasNode || !hasNpm) {
   console.log('\nInstall Node.js 22 LTS from https://nodejs.org');
   process.exit(1);
 }
-if (!hasFfmpeg) console.log('⚠ FFmpeg not found — install: winget install FFmpeg  (or choco install ffmpeg)');
+if (!hasFfmpeg) {
+  if (process.platform === 'win32') {
+    console.log('⚠ FFmpeg not found — install: winget install FFmpeg (or choco install ffmpeg)');
+  } else if (process.platform === 'darwin') {
+    console.log('⚠ FFmpeg not found — install: brew install ffmpeg');
+  } else {
+    console.log('⚠ FFmpeg not found — install: sudo apt install ffmpeg (or your distro package manager)');
+  }
+}
 
 const hasDist = fs.existsSync(MAIN_ENTRY);
 const hasElectron = fs.existsSync(path.join(PROJECT_ROOT, 'node_modules', 'electron'));

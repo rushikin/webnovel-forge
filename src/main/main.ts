@@ -385,6 +385,7 @@ function initializeDatabase(db: any) {
 }
 
 function createWindow() {
+  const isMac = process.platform === 'darwin'
   mainWindow = new BrowserWindow({
     width: 1400,
     height: 900,
@@ -396,12 +397,16 @@ function createWindow() {
       nodeIntegration: false,
       sandbox: true,
     },
-    titleBarStyle: 'hidden',
-    titleBarOverlay: {
-      color: '#0D0F14',
-      symbolColor: '#C9A84C',
-      height: 40,
-    },
+    titleBarStyle: isMac ? 'hiddenInset' : 'hidden',
+    ...(isMac
+      ? {}
+      : {
+          titleBarOverlay: {
+            color: '#0D0F14',
+            symbolColor: '#C9A84C',
+            height: 40,
+          },
+        }),
     backgroundColor: '#0D0F14',
     show: false,
   })
@@ -587,8 +592,14 @@ ipcMain.handle(IPC_CHANNELS.LIBRARY_CREATE_STORY, async (_e, payload: { title: s
 ipcMain.handle(IPC_CHANNELS.LIBRARY_OPEN_FOLDER, async (_e, projectPath: string) => {
   try {
     const errorMsg = await shell.openPath(projectPath)
-    if (errorMsg && process.platform === 'win32') {
-      spawn('explorer.exe', [projectPath], { detached: true, stdio: 'ignore' }).unref()
+    if (errorMsg) {
+      if (process.platform === 'win32') {
+        spawn('explorer.exe', [projectPath], { detached: true, stdio: 'ignore' }).unref()
+      } else if (process.platform === 'darwin') {
+        spawn('open', [projectPath], { detached: true, stdio: 'ignore' }).unref()
+      } else {
+        spawn('xdg-open', [projectPath], { detached: true, stdio: 'ignore' }).unref()
+      }
     }
   } catch (err) {
     console.warn('[Library] Failed to open folder:', err)
@@ -1425,13 +1436,26 @@ ipcMain.handle(IPC_CHANNELS.HYPERFRAMES_DELETE_VIDEO, async (_e, payload: { proj
   return await hyperframesDeleteVideo(projectPath, slug)
 })
 
-ipcMain.handle(IPC_CHANNELS.HYPERFRAMES_OPEN_FOLDER, (_e, payload: { projectPath: string; slug?: string }) => {
+ipcMain.handle(IPC_CHANNELS.HYPERFRAMES_OPEN_FOLDER, async (_e, payload: { projectPath: string; slug?: string }) => {
   const { projectPath, slug } = payload
   const target = slug ? path.join(projectPath, 'videos', slug) : path.join(projectPath, 'videos')
   if (!fs.existsSync(target)) {
     fs.mkdirSync(target, { recursive: true })
   }
-  exec(`explorer "${target}"`)
+  try {
+    const errorMsg = await shell.openPath(target)
+    if (errorMsg) {
+      if (process.platform === 'win32') {
+        spawn('explorer.exe', [target], { detached: true, stdio: 'ignore' }).unref()
+      } else if (process.platform === 'darwin') {
+        spawn('open', [target], { detached: true, stdio: 'ignore' }).unref()
+      } else {
+        spawn('xdg-open', [target], { detached: true, stdio: 'ignore' }).unref()
+      }
+    }
+  } catch (err) {
+    console.warn('[Hyperframes] Failed to open folder:', err)
+  }
 })
 
 ipcMain.handle(IPC_CHANNELS.HYPERFRAMES_SAVE_MP4_AS, async (_e, payload: { projectPath: string; slug: string }) => {
